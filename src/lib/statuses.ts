@@ -1,4 +1,5 @@
-import { solution } from './words'
+import { solution, getRandomInt } from './words'
+import { CSS_COLOR_NAMES } from '../constants/cssColors'
 
 export type CharStatus = 'absent' | 'present' | 'correct'
 
@@ -100,3 +101,23 @@ export const getGuessStatuses = (guess: string): CharStatus[] => {
 
   return statuses
 }
+
+export const getStatusColors = () => {
+  const presentIndex = getRandomInt(0, CSS_COLOR_NAMES.length)
+  let absentIndex = getRandomInt(0, CSS_COLOR_NAMES.length)
+  let correctIndex = getRandomInt(0, CSS_COLOR_NAMES.length)
+  while (absentIndex === presentIndex) {
+    absentIndex = getRandomInt(0, CSS_COLOR_NAMES.length)
+  }
+  while (correctIndex === absentIndex || correctIndex === presentIndex) {
+    correctIndex = getRandomInt(0, CSS_COLOR_NAMES.length)
+  }
+
+  return {
+    absentColor: CSS_COLOR_NAMES[absentIndex],
+    presentColor: CSS_COLOR_NAMES[presentIndex],
+    correctColor: CSS_COLOR_NAMES[correctIndex],
+  }
+}
+
+export const { absentColor, presentColor, correctColor } = getStatusColors()

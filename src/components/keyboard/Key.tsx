@@ -1,7 +1,12 @@
 import { ReactNode } from 'react'
 import classnames from 'classnames'
 import { KeyValue } from '../../lib/keyboard'
-import { CharStatus } from '../../lib/statuses'
+import {
+  absentColor,
+  CharStatus,
+  correctColor,
+  presentColor,
+} from '../../lib/statuses'
 
 type Props = {
   children?: ReactNode
@@ -9,6 +14,49 @@ type Props = {
   width?: number
   status?: CharStatus
   onClick: (value: KeyValue) => void
+  absentColor: string
+  correctColor: string
+  presentColor: string
+}
+
+export const getKeyStyles = (
+  value: string | undefined,
+  status: CharStatus | undefined,
+  width: number
+) => {
+  if (!status) {
+    return {
+      width: `${width}px`,
+      height: '58px',
+    }
+  }
+  if (status === 'absent') {
+    return {
+      width: `${width}px`,
+      height: '58px',
+      background: absentColor,
+      border: absentColor,
+      textColor: 'White',
+    }
+  }
+  if (status === 'present') {
+    return {
+      width: `${width}px`,
+      height: '58px',
+      background: presentColor,
+      border: presentColor,
+      textColor: 'White',
+    }
+  }
+  if (status === 'correct') {
+    return {
+      width: `${width}px`,
+      height: '58px',
+      background: correctColor,
+      border: correctColor,
+      textColor: 'White',
+    }
+  }
 }
 
 export const Key = ({
@@ -22,11 +70,6 @@ export const Key = ({
     'flex items-center justify-center rounded mx-0.5 text-xs font-bold cursor-pointer select-none',
     {
       'bg-slate-200 hover:bg-slate-300 active:bg-slate-400': !status,
-      'bg-slate-400 text-white': status === 'absent',
-      'bg-green-500 hover:bg-green-600 active:bg-green-700 text-white':
-        status === 'correct',
-      'bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 text-white':
-        status === 'present',
     }
   )
 
@@ -37,7 +80,7 @@ export const Key = ({
 
   return (
     <button
-      style={{ width: `${width}px`, height: '58px' }}
+      style={getKeyStyles(value, status, width)}
       className={classes}
       onClick={handleClick}
     >

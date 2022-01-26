@@ -1,5 +1,6 @@
 import { Cell } from '../grid/Cell'
 import { BaseModal } from './BaseModal'
+import { presentColor, absentColor, correctColor } from '../../lib/statuses'
 
 type Props = {
   isOpen: boolean
@@ -15,33 +16,111 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
       </p>
 
       <div className="flex justify-center mb-1 mt-4">
-        <Cell value="W" status="correct" />
-        <Cell value="E" />
-        <Cell value="A" />
-        <Cell value="R" />
-        <Cell value="Y" />
+        <Cell
+          value="W"
+          status="correct"
+          presentColor={presentColor}
+          absentColor={absentColor}
+          correctColor={correctColor}
+        />
+        <Cell
+          value="E"
+          presentColor={presentColor}
+          absentColor={absentColor}
+          correctColor={correctColor}
+        />
+        <Cell
+          value="A"
+          presentColor={presentColor}
+          absentColor={absentColor}
+          correctColor={correctColor}
+        />
+        <Cell
+          value="R"
+          presentColor={presentColor}
+          absentColor={absentColor}
+          correctColor={correctColor}
+        />
+        <Cell
+          value="Y"
+          presentColor={presentColor}
+          absentColor={absentColor}
+          correctColor={correctColor}
+        />
       </div>
       <p className="text-sm text-gray-500">
         The letter W is in the word and in the correct spot.
       </p>
 
       <div className="flex justify-center mb-1 mt-4">
-        <Cell value="P" />
-        <Cell value="I" />
-        <Cell value="L" status="present" />
-        <Cell value="O" />
-        <Cell value="T" />
+        <Cell
+          value="P"
+          presentColor={presentColor}
+          absentColor={absentColor}
+          correctColor={correctColor}
+        />
+        <Cell
+          value="I"
+          presentColor={presentColor}
+          absentColor={absentColor}
+          correctColor={correctColor}
+        />
+        <Cell
+          value="L"
+          status="present"
+          presentColor={presentColor}
+          absentColor={absentColor}
+          correctColor={correctColor}
+        />
+        <Cell
+          value="O"
+          presentColor={presentColor}
+          absentColor={absentColor}
+          correctColor={correctColor}
+        />
+        <Cell
+          value="T"
+          presentColor={presentColor}
+          absentColor={absentColor}
+          correctColor={correctColor}
+        />
       </div>
       <p className="text-sm text-gray-500">
         The letter L is in the word but in the wrong spot.
       </p>
 
       <div className="flex justify-center mb-1 mt-4">
-        <Cell value="V" />
-        <Cell value="A" />
-        <Cell value="G" />
-        <Cell value="U" status="absent" />
-        <Cell value="E" />
+        <Cell
+          value="V"
+          presentColor={presentColor}
+          absentColor={absentColor}
+          correctColor={correctColor}
+        />
+        <Cell
+          value="A"
+          presentColor={presentColor}
+          absentColor={absentColor}
+          correctColor={correctColor}
+        />
+        <Cell
+          value="G"
+          presentColor={presentColor}
+          absentColor={absentColor}
+          correctColor={correctColor}
+        />
+        <Cell
+          value="U"
+          status="absent"
+          presentColor={presentColor}
+          absentColor={absentColor}
+          correctColor={correctColor}
+        />
+        <Cell
+          value="E"
+          presentColor={presentColor}
+          absentColor={absentColor}
+          correctColor={correctColor}
+        />
       </div>
       <p className="text-sm text-gray-500">
         The letter U is not in the word in any spot.

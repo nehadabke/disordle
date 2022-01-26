@@ -1,4 +1,5 @@
 import { Cell } from './Cell'
+import { presentColor, absentColor, correctColor } from '../../lib/statuses'
 
 type Props = {
   guess: string
@@ -11,10 +12,21 @@ export const CurrentRow = ({ guess }: Props) => {
   return (
     <div className="flex justify-center mb-1">
       {splitGuess.map((letter, i) => (
-        <Cell key={i} value={letter} />
+        <Cell
+          key={i}
+          value={letter}
+          presentColor={presentColor}
+          absentColor={absentColor}
+          correctColor={correctColor}
+        />
       ))}
       {emptyCells.map((_, i) => (
-        <Cell key={i} />
+        <Cell
+          key={i}
+          presentColor={presentColor}
+          absentColor={absentColor}
+          correctColor={correctColor}
+        />
       ))}
     </div>
   )

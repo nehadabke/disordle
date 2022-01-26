@@ -12,12 +12,14 @@ export const isWinningWord = (word: string) => {
   return solution === word
 }
 
+export function getRandomInt(min: number, max: number) {
+  min = Math.ceil(min)
+  max = Math.floor(max)
+  return Math.floor(Math.random() * (max - min) + min) //The maximum is exclusive and the minimum is inclusive
+}
+
 export const getWordOfDay = () => {
-  // January 1, 2022 Game Epoch
-  const epochMs = 1641013200000
-  const now = Date.now()
-  const msInDay = 86400000
-  const index = Math.floor((now - epochMs) / msInDay)
+  const index = getRandomInt(0, WORDS.length)
 
   return {
     solution: WORDS[index].toUpperCase(),
